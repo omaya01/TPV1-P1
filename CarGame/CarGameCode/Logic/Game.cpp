@@ -25,6 +25,11 @@ string Game::getGameName() {
 
 Game::~Game() {
     cout << "[DEBUG] deleting game" << endl;
+
+    // puesto para que no deje basura
+    delete car;
+    delete font;
+    delete textureContainer;
 }
 
 void Game::update(){

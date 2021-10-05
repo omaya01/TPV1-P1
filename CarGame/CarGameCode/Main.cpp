@@ -6,11 +6,6 @@
 
 using namespace std;
 
-
-void exampleLeak() {
-    int* a = new int(5);
-}
-
 int main(int argc, char* argv[]){
 
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
@@ -24,7 +19,6 @@ int main(int argc, char* argv[]){
         cout << e;
     }
 
-    exampleLeak(); // You can remove this line
 	return 0;
 }
 
