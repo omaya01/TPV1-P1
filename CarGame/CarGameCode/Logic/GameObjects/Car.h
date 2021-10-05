@@ -46,6 +46,11 @@ public:
     void setPosition(double x, double y);
 
     SDL_Rect getCollider();
+
+    //para cambiar la posicion
+    void upNdown(int i);
+    void accelerate();
+    void decelerate();
 };
 
 

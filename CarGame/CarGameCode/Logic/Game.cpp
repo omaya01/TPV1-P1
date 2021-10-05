@@ -100,3 +100,7 @@ Texture *Game::getTexture(TextureName name) {
 Point2D<int> Game::getOrigin() {
     return {int(-(car->getX() - car->getWidth())), 0};
 }
+
+void Game::carUpNdown(int i) {
+    car->upNdown(i);
+}

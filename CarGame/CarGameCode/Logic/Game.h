@@ -62,6 +62,9 @@ public:
 
     void drawInfo();
 
+    //metodos para coche
+    void carUpNdown(int i);
+
 };
 
 
