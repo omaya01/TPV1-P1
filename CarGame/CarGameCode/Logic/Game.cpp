@@ -104,3 +104,8 @@ Point2D<int> Game::getOrigin() {
 void Game::carUpNdown(int i) {
     car->upNdown(i);
 }
+
+void Game::carAccNdec(bool i) {
+    if (i) car->accelerate();
+    else car->decelerate();
+}

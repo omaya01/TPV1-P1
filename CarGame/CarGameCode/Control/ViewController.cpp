@@ -55,8 +55,10 @@ void ViewController::handleEvents() {
                 game->carUpNdown(1);
                 break;
             case SDLK_RIGHT:
+                game->carAccNdec(true);
                 break;
             case SDLK_LEFT:
+                game->carAccNdec(false);
                 break;
             default:
                 break;

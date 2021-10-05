@@ -27,6 +27,8 @@ private:
     Game *game;
     Texture *texture;
 
+    //variables para movimiento
+    double vel = 1;
 
 public:
     Car(Game *game);

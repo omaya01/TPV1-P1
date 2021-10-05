@@ -20,8 +20,9 @@ void  Car::setPosition(double x, double y){
     pos = Point2D<double>(x, y);
 };
 
+// cambiado para trabajar con variable privada vel (creada por mi), supongo que esto esta bien porque si no como narices hago para cambiar la velocidad de actualizacion
 void Car::update() {
-    pos = Point2D<double>(getX() + 1, getY());
+    pos = Point2D<double>(getX() + vel, getY());
 }
 
 Car::~Car(){};
@@ -52,4 +53,14 @@ SDL_Rect Car::getCollider(){
 void Car::upNdown(int i) {
     Point2D<double> p(pos.getX(), pos.getY() + (VSPEED * i));
     pos = p;
+}
+
+void Car::accelerate() {
+    vel *= ACCELERATION;
+    if (vel > MAX_SPEED)vel = MAX_SPEED;
+}
+
+void Car::decelerate() {
+    vel *= DECELERATION;
+    if (vel < 1)vel = 1; //no viene el minimo pero no creo que haga falta porner una variable constante para ello, o si, no se
 }
