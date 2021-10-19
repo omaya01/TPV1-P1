@@ -47,7 +47,7 @@ void Game::draw(){
         drawInfo();
         break;
     case GAMEOVER:
-        
+        drawGameOver();
         break;
     }
 }
@@ -63,17 +63,17 @@ void Game::drawInfo() {
     // cosas de aqui van a tener que ser variables independientes
     string s1 = "Pos: " + to_string(int(car->getX())) + " "
                + to_string(int(car->getY())) + "  " + 
-        "Distance: " + to_string(roadLength-(int)car->getX())+ "  " +
-        "Speed: " + to_string((int) car->getVel()) + "  " +
-        "Power: " + to_string(car->getPower()) + "  " +
-        "Time: " + to_string(SDL_GetTicks()/1000) + "  " +
-        "Obstacles: ";
+        "Distance: " + to_string(distance_)+ "  " + //como esta
+        "Speed: " + to_string((int) car->getVel()) + "  " + 
+        "Power: " + to_string(car->getPower()) + "  " + 
+        "Time: " + to_string(time_) + "  " + 
+        "Obstacles: "; //y esto habria que hacerlo
     string s2 = "State: Playing"; // esto deberia pillar el nombre de la variable directamente?
 
     renderText(s1, x, y);
     renderText(s2, x, height - font->getSize());
 
-    if (help) {
+    if (help_) {
         int yh = font->getSize()*2;
 
         string h1 = "[UP/DOWN] to move";
@@ -113,7 +113,7 @@ void Game::drawMenu() {
 
     renderText(s5, font->getSize()/2, height - font->getSize());
 
-    if (help) {
+    if (help_) {
         int xh = font->getSize() / 2;
 
         string h1 = "[h] toggle help";
@@ -125,8 +125,42 @@ void Game::drawMenu() {
         renderText(h3, xh, xh + font->getSize() * 2);
     }
 }
-void Game::drawGameOver(bool i) {
-    
+void Game::drawGameOver() {
+    string s1="";
+    string s2="";
+    string s3="";
+
+    if (!victory_) {
+        s1 = "Game Over!";
+    }
+    else {
+        s1 = "Congratulations!";
+        s2 = "User wins";
+        s3 = "Time: " + to_string(time_);
+    }
+
+    string s5 = "State: GameOver";
+
+    int x = width / 2 - (s1.length() / 2) * font->getSize();
+    int y = height / 2 - font->getSize() * 2;
+
+    renderText(s1, x, y);
+    renderText(s2, x, y + font->getSize());
+    renderText(s3, x, y + font->getSize() * 2);
+
+    renderText(s5, font->getSize() / 2, height - font->getSize());
+
+    if (help_) {
+        int xh = font->getSize() / 2;
+
+        string h1 = "[h] toggle help";
+        string h2 = "[ ] space to skip";
+        string h3 = "[ESC] to quit";
+
+        renderText(h1, xh, xh);
+        renderText(h2, xh, xh + font->getSize());
+        renderText(h3, xh, xh + font->getSize() * 2);
+    }
 }
 
 void Game::changeState(state_ s) {

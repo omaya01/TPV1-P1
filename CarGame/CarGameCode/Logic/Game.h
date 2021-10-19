@@ -26,10 +26,13 @@ class Game{
 private:
     string name;
     bool doExit;
-    bool help = false;
+    bool help_ = false;
+    bool victory_ = false;
     int roadLength;
     int width, height;
     Car *car = nullptr;
+    int distance_;
+    float time_;
 
     TextureContainer *textureContainer;
     SDL_Renderer* renderer = nullptr;
@@ -68,10 +71,10 @@ public:
 
     void drawInfo();
     void drawMenu();
-    void drawGameOver(bool i);
+    void drawGameOver();
     
     void changeState(state_ s);
-    void switchHelp() { help = !help; }
+    void switchHelp() { help_ = !help_; }
 
     //metodos para coche
     void carUpNdown(int i);
