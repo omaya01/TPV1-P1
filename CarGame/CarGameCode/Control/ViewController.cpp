@@ -60,7 +60,18 @@ void ViewController::handleEvents() {
             case SDLK_LEFT:
                 game->carAccNdec(-1);
                 break;
-            default:
+            }
+        }
+        else if (event.type == SDL_KEYUP) {
+            switch (event.key.keysym.sym)
+            {
+            case SDLK_UP:
+            case SDLK_DOWN:
+                game->carUpNdown(0);
+                break;
+            case SDLK_RIGHT:
+            case SDLK_LEFT:
+                game->carAccNdec(0);
                 break;
             }
         }
