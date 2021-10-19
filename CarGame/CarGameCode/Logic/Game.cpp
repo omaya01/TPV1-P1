@@ -59,21 +59,49 @@ void Game::drawInfo() {
     SDL_Rect rect = {0, 0, getWindowWidth(),
                      int(font->getSize() * 1.8)};
     Box(rect, BLACK).render(renderer);
-
-    string s = "Pos: " + to_string(int(car->getX())) + " "
+    
+    // cosas de aqui van a tener que ser variables independientes
+    string s1 = "Pos: " + to_string(int(car->getX())) + " "
                + to_string(int(car->getY())) + "  " + 
         "Distance: " + to_string(roadLength-(int)car->getX())+ "  " +
         "Speed: " + to_string((int) car->getVel()) + "  " +
         "Power: " + to_string(car->getPower()) + "  " +
         "Time: " + to_string(SDL_GetTicks()/1000) + "  " +
         "Obstacles: ";
-    renderText(s, x, y);
+    string s2 = "State: Playing"; // esto deberia pillar el nombre de la variable directamente?
+
+    renderText(s1, x, y);
+    renderText(s2, x, height - font->getSize());
+
+    if (help) {
+        int yh = font->getSize()*2;
+
+        string h1 = "[UP/DOWN] to move";
+        string h2 = "[RIGHT/LEFT] to speed up";
+        string h3 = "[s] to shoot (Not Implemented)";
+        string h4 = "[d] toggle debug (Not Implemented)";
+        string h5 = "[h] toggle help";
+        string h6 = "[p] to pause/unpause (Not Implemented)";
+        string h7 = "[ ] space to skip";
+        string h8 = "[ESC] to quit";
+
+        renderText(h1, x, yh);
+        renderText(h2, x, yh + font->getSize());
+        renderText(h3, x, yh + font->getSize()*2);
+        renderText(h4, x, yh + font->getSize()*3);
+        renderText(h5, x, yh + font->getSize()*4);
+        renderText(h6, x, yh + font->getSize()*5);
+        renderText(h7, x, yh + font->getSize()*6);
+        renderText(h8, x, yh + font->getSize()*7);
+    }
 }
 void Game::drawMenu() {
     string s1 = "Welcome to Super Cars";
     string s2 = "Level: " + to_string(level_);
     string s3 = "Press space to start";
     string s4 = "Press [h] for help";
+
+    string s5 = "State: Menu";
 
     int x = width / 2 - (s1.length()/2)*font->getSize();
     int y = height / 2 - font->getSize() * 2;
@@ -82,9 +110,27 @@ void Game::drawMenu() {
     renderText(s2, x, y + font->getSize());
     renderText(s3, x, y + font->getSize()*2);
     renderText(s4, x, y + font->getSize()*3);
+
+    renderText(s5, font->getSize()/2, height - font->getSize());
+
+    if (help) {
+        int xh = font->getSize() / 2;
+
+        string h1 = "[h] toggle help";
+        string h2 = "[ ] space to skip";
+        string h3 = "[ESC] to quit";
+
+        renderText(h1, xh, xh);
+        renderText(h2, xh, xh + font->getSize());
+        renderText(h3, xh, xh + font->getSize() * 2);
+    }
 }
 void Game::drawGameOver(bool i) {
     
+}
+
+void Game::changeState(state_ s) {
+    if (currentState_ != s) currentState_ = s;
 }
 
 void Game::setUserExit() {

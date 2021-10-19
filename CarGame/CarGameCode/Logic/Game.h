@@ -26,6 +26,7 @@ class Game{
 private:
     string name;
     bool doExit;
+    bool help = false;
     int roadLength;
     int width, height;
     Car *car = nullptr;
@@ -35,6 +36,7 @@ private:
     Font *font;
 
     state_ currentState_ = MENU;
+
     int level_ = 0;
 public:
     const unsigned int CAR_WIDTH = 100;
@@ -67,6 +69,9 @@ public:
     void drawInfo();
     void drawMenu();
     void drawGameOver(bool i);
+    
+    void changeState(state_ s);
+    void switchHelp() { help = !help; }
 
     //metodos para coche
     void carUpNdown(int i);

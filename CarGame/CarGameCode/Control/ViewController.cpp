@@ -60,6 +60,15 @@ void ViewController::handleEvents() {
             case SDLK_LEFT:
                 game->carAccNdec(-1);
                 break;
+            case SDLK_SPACE:
+                game->changeState(RUNNING);
+                break;
+            case SDLK_ESCAPE:
+                game->setUserExit();
+                break;
+            case SDLK_h:
+                game->switchHelp();
+                break;
             }
         }
         else if (event.type == SDL_KEYUP) {
