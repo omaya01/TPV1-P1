@@ -28,7 +28,9 @@ private:
     Texture *texture;
 
     //variables para movimiento
-    double vel = 1;
+    double vel_ = 1;
+    int vmove = 0;
+    int hmove = 0;
 
 public:
     Car(Game *game);
@@ -51,8 +53,7 @@ public:
 
     //para cambiar la posicion
     void upNdown(int i);
-    void accelerate();
-    void decelerate();
+    void accelerateNdecelerate(int i);
 };
 
 

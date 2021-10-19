@@ -64,7 +64,7 @@ public:
 
     //metodos para coche
     void carUpNdown(int i);
-    void carAccNdec(bool i);
+    void carAccNdec(int i);
 
 };
 
