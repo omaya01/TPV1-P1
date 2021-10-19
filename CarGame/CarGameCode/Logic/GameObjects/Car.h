@@ -31,6 +31,8 @@ private:
     double vel_ = 1;
     int vmove = 0;
     int hmove = 0;
+    //no se si es lo correcto pero como la otra es constante y no la puedo cambiar pues toca crear otra
+    int power_ = INITIAL_POWER;
 
 public:
     Car(Game *game);
@@ -46,6 +48,8 @@ public:
     double getY() {return pos.getY();};
     int getWidth() {return w;};
     int getHeight() {return h;};
+    double getVel() { return vel_; }
+    int getPower() { return power_; }
 
     void setPosition(double x, double y);
 

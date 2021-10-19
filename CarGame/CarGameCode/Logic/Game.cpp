@@ -37,8 +37,19 @@ void Game::update(){
 }
 
 void Game::draw(){
-    car->draw();
-    drawInfo();
+    switch (currentState_)
+    {
+    case MENU:
+        drawMenu();
+        break;
+    case RUNNING:
+        car->draw();
+        drawInfo();
+        break;
+    case GAMEOVER:
+        
+        break;
+    }
 }
 
 void Game::drawInfo() {
@@ -50,8 +61,30 @@ void Game::drawInfo() {
     Box(rect, BLACK).render(renderer);
 
     string s = "Pos: " + to_string(int(car->getX())) + " "
-               + to_string(int(car->getY()));
+               + to_string(int(car->getY())) + "  " + 
+        "Distance: " + to_string(roadLength-(int)car->getX())+ "  " +
+        "Speed: " + to_string((int) car->getVel()) + "  " +
+        "Power: " + to_string(car->getPower()) + "  " +
+        "Time: " + to_string(SDL_GetTicks()/1000) + "  " +
+        "Obstacles: ";
     renderText(s, x, y);
+}
+void Game::drawMenu() {
+    string s1 = "Welcome to Super Cars";
+    string s2 = "Level: " + to_string(level_);
+    string s3 = "Press space to start";
+    string s4 = "Press [h] for help";
+
+    int x = width / 2 - (s1.length()/2)*font->getSize();
+    int y = height / 2 - font->getSize() * 2;
+    
+    renderText(s1, x, y);
+    renderText(s2, x, y + font->getSize());
+    renderText(s3, x, y + font->getSize()*2);
+    renderText(s4, x, y + font->getSize()*3);
+}
+void Game::drawGameOver(bool i) {
+    
 }
 
 void Game::setUserExit() {

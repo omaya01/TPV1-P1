@@ -16,6 +16,7 @@
 
 #include "GameObjects/Car.h"
 
+enum state_ {MENU, RUNNING, GAMEOVER};
 
 using namespace std;
 
@@ -32,6 +33,9 @@ private:
     TextureContainer *textureContainer;
     SDL_Renderer* renderer = nullptr;
     Font *font;
+
+    state_ currentState_ = MENU;
+    int level_ = 0;
 public:
     const unsigned int CAR_WIDTH = 100;
     const unsigned  int CAR_HEIGHT = 50;
@@ -61,6 +65,8 @@ public:
     void renderText(string text, int x, int y, SDL_Color color={0,0,0});
 
     void drawInfo();
+    void drawMenu();
+    void drawGameOver(bool i);
 
     //metodos para coche
     void carUpNdown(int i);
