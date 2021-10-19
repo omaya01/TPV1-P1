@@ -28,7 +28,7 @@ private:
     Texture *texture;
 
     //variables para movimiento
-    double vel_ = 1;
+    double vel_ = 0;
     int vmove = 0;
     int hmove = 0;
     //no se si es lo correcto pero como la otra es constante y no la puedo cambiar pues toca crear otra

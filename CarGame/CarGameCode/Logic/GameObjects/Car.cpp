@@ -53,6 +53,10 @@ void Car::update() {
             vel_ = MAX_SPEED;
             hmove = 0;
         }
+        else if (vel_ == 0) {
+            vel_ = 1;
+            hmove = 0;
+        }
         break;
     case -1:
         vel_ *= DECELERATION;
