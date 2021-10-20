@@ -14,6 +14,7 @@
     <ClCompile Include="CarGameCode\Control\ViewController.cpp" />
     <ClCompile Include="CarGameCode\Logic\Game.cpp" />
     <ClCompile Include="CarGameCode\Logic\GameObjects\Car.cpp" />
+    <ClCompile Include="CarGameCode\Logic\GameObjects\Wall.cpp" />
     <ClCompile Include="CarGameCode\Main.cpp" />
     <ClCompile Include="CarGameCode\View\Texture.cpp" />
   </ItemGroup>
@@ -21,6 +22,7 @@
     <ClInclude Include="CarGameCode\Control\ViewController.h" />
     <ClInclude Include="CarGameCode\Logic\Game.h" />
     <ClInclude Include="CarGameCode\Logic\GameObjects\Car.h" />
+    <ClInclude Include="CarGameCode\Logic\GameObjects\Wall.h" />
     <ClInclude Include="CarGameCode\Utils\Vector2D.h" />
     <ClInclude Include="CarGameCode\View\Box.h" />
     <ClInclude Include="CarGameCode\View\Font.h" />

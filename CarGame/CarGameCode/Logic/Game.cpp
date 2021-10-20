@@ -4,19 +4,33 @@
 
 #include "Game.h"
 
-Game::Game(string name, int width, int height, int roadLength) {
+Game::Game(string name, int width, int height, int roadLength, int obstacles) {
     this->name = name;
     this->roadLength = roadLength;
     this->width = width;
     this->height = height;
     doExit = false;
     font = new Font("../Images/Monospace.ttf", 12);
+    createObstacles(obstacles);
 }
 
 void Game::startGame() {
     car = new Car(this);
     car->setDimension(CAR_WIDTH, CAR_HEIGHT);
     car->setPosition(car->getWidth(), height/ 2.0);
+}
+
+void Game::createObstacles(int i) {
+    for (int j = 0; j < i; j++) {
+        obstacles.push_back(new Wall(this));
+        obstacles[j]->setPosition(rand() % (roadLength - (car->getWidth() * 2)) + (car->getWidth() * 2), rand() % height);
+        obstacles[j]->setDimension();//wall dimensions
+    }
+    //no puede ser asi porque si no al cambiar de estado no se va a cambiar el numero de obstaculos 
+    //hay que hacer esto en start game con una variable privada que determine le numero y luego cambiarlo
+    //maybe hacerlo en dos fases, una de creacion y otra de setear posicion y dimensiones a la vez que chekeas con el resto
+    //el problema es que de esa forma la segunda fase es cuadratica y eso esta feo pero idk
+
 }
 
 string Game::getGameName() {

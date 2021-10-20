@@ -15,6 +15,7 @@
 #include "../View/Font.h"
 
 #include "GameObjects/Car.h"
+#include "GameObjects/Wall.h"
 
 enum state_ {MENU, RUNNING, GAMEOVER};
 
@@ -34,6 +35,8 @@ private:
     int distance_;
     float time_;
 
+    vector<Wall*> obstacles; //a futuro cambiar esto a gameobjects
+    
     TextureContainer *textureContainer;
     SDL_Renderer* renderer = nullptr;
     Font *font;
@@ -41,11 +44,13 @@ private:
     state_ currentState_ = MENU;
 
     int level_ = 0;
+
+    void createObstacles(int i);
 public:
     const unsigned int CAR_WIDTH = 100;
     const unsigned  int CAR_HEIGHT = 50;
 
-    Game(string name, int width, int height, int roadLength);
+    Game(string name, int width, int height, int roadLength, int obstacles);
     ~Game();
 
     void startGame();
