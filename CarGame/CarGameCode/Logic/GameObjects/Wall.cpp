@@ -14,7 +14,7 @@ void Wall::draw() {
 }
 
 void Wall::update() {
-	if ( (-game_->getOrigin().getX())+ game_->getWindowWidth() > pos_.getX()) {
+	if ( (-game_->getOrigin().getX())+ game_->getWindowWidth()+w_ > pos_.getX()) {
 		draw();
 	}
 

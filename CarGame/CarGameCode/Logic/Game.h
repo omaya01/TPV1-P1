@@ -16,6 +16,7 @@
 
 #include "GameObjects/Car.h"
 #include "GameObjects/Wall.h"
+#include "GameObjects/Meta.h"
 
 enum state_ {MENU, RUNNING, GAMEOVER};
 
@@ -34,6 +35,7 @@ private:
     Car *car = nullptr;
     int distance_;
     float time_;
+    Meta* goal_ = nullptr;
 
     int nObstacles_;
     vector<Wall*> obstacles_; //a futuro cambiar esto a gameobjects

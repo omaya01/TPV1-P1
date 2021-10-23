@@ -12,9 +12,11 @@ Game::Game(string name, int width, int height, int roadLength, int obstacles) {
     doExit = false;
     font = new Font("../Images/Monospace.ttf", 12);
     nObstacles_ = obstacles;
+    goal_ = new Meta(this); goal_->setDimension(50, height); goal_->setPosition(roadLength, height / 2);
 }
 
 void Game::startGame() {
+    time_ = 0;
     car = new Car(this);
     car->setDimension(CAR_WIDTH, CAR_HEIGHT);
     car->setPosition(car->getWidth(), height/ 2.0);
@@ -75,8 +77,11 @@ void Game::update(){
     case MENU:
         break;
     case RUNNING:
+        time_ += SDL_GetTicks() / 1000;
+        distance_ = roadLength - car->getX();
         car->update();
         for (Wall* w : obstacles_)w->update();
+        goal_->update();
         break;
     case GAMEOVER:
         break;
