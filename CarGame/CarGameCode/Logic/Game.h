@@ -84,6 +84,10 @@ public:
     
     void changeState(state_ s);
     void switchHelp() { help_ = !help_; }
+    void vic(bool i) { victory_ = i; }
+
+    SDL_Rect getCarColl() { return car->getCollider(); }
+    void gotHit(Wall *w);
 
     //metodos para coche
     void carUpNdown(int i);

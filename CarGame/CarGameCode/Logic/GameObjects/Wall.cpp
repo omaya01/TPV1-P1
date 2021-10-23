@@ -14,7 +14,13 @@ void Wall::draw() {
 }
 
 void Wall::update() {
+	if ( (-game_->getOrigin().getX())+ game_->getWindowWidth() > pos_.getX()) {
+		draw();
+	}
 
+	if (SDL_HasIntersection(&getCollider(), &game_->getCarColl())) {
+		game_->gotHit(this);
+	}
 }
 
 void Wall::drawTexture(Texture* t) {
@@ -22,8 +28,9 @@ void Wall::drawTexture(Texture* t) {
 	int dY = game_->getOrigin().getY();
 
 	SDL_Rect c = getCollider();
-	SDL_Rect textureBox = { c.x + dX, c.y + dY, c.w, c.h };
+	SDL_Rect textureBox = { c.x, c.y + dY, c.w, c.h };
 	t->render(textureBox);
+	SDL_RenderDrawRect(game_->getRenderer(), &c);
 }
 
 void Wall::setDimension(int width, int height) {
@@ -36,8 +43,8 @@ void Wall::setPosition(double x, double y) {
 }
 
 SDL_Rect Wall::getCollider() {
-	return { int(getX() - getWidth()),
-			 int(getY() - getHeight() / 2),
+	return { int(getX() - getWidth()+game_->getOrigin().getX()),
+			 int(getY() - getHeight()/2),
 			 getWidth(),
 			 getHeight() };
 }

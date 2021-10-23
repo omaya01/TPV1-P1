@@ -82,16 +82,26 @@ void Car::drawTexture(Texture *texture) {
     int dY = game->getOrigin().getY();
 
     SDL_Rect c = getCollider();
-    SDL_Rect textureBox = { c.x + dX, c.y + dY, c.w, c.h};
+    SDL_Rect textureBox = { c.x , c.y + dY, c.w, c.h};
     texture->render(textureBox);
+    SDL_RenderDrawRect(game->getRenderer(), &c);
 }
 
 
 SDL_Rect Car::getCollider(){
-    return { int(getX() - getWidth()),
+    return { int(getX() - getWidth() + game->getOrigin().getX()),
              int(getY() - getHeight()/2),
              getWidth(),
              getHeight()};
+}
+
+void Car::gotHit() {
+    if (power_ - 1 == 0) {
+        game->vic(false);
+        game->changeState(GAMEOVER);
+    }
+    else power_--;
+    vel_=0;
 }
 
 void Car::upNdown(int i) {

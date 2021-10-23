@@ -37,7 +37,7 @@ void ViewController::run() {
 
 void ViewController::clearBackground() {
     SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
 }
 
 void ViewController::handleEvents() {

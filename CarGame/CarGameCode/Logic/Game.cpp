@@ -34,18 +34,20 @@ void Game::createObstacles() {
         if (obstacles_.size() == 0)obstacles_.push_back(auxObstacles_[i]);
         else {
             int k = 0;
-            while (k < obstacles_.size() && !SDL_IntersectRect(&auxObstacles_[i]->getCollider(), &obstacles_[k]->getCollider(), NULL)) {
+            while (k < obstacles_.size() && !SDL_HasIntersection(&auxObstacles_[i]->getCollider(), &obstacles_[k]->getCollider())) {
                 k++;
             }
             if (k == obstacles_.size())obstacles_.push_back(auxObstacles_[i]);            
         }
     }
 
-    for (int i = 0; i < auxObstacles_.size(); i++) {
+    /*
+     for (int i = 0; i < auxObstacles_.size(); i++) {
         delete auxObstacles_[i];
         auxObstacles_[i] = nullptr;
         auxObstacles_.erase(auxObstacles_.begin() + i);
     }
+    */   
 }
 
 string Game::getGameName() {
@@ -68,8 +70,19 @@ Game::~Game() {
 }
 
 void Game::update(){
-    car->update();
+    switch (currentState_)
+    {
+    case MENU:
+        break;
+    case RUNNING:
+        car->update();
+        for (Wall* w : obstacles_)w->update();
+        break;
+    case GAMEOVER:
+        break;
+    }
 }
+
 
 void Game::draw(){
     switch (currentState_)
@@ -102,7 +115,7 @@ void Game::drawInfo() {
         "Speed: " + to_string((int) car->getVel()) + "  " + 
         "Power: " + to_string(car->getPower()) + "  " + 
         "Time: " + to_string(time_) + "  " + 
-        "Obstacles: "; //y esto habria que hacerlo
+        "Obstacles: " + to_string(obstacles_.size()); //y esto habria que hacerlo
     string s2 = "State: Playing"; // esto deberia pillar el nombre de la variable directamente?
 
     renderText(s1, x, y);
@@ -161,9 +174,9 @@ void Game::drawMenu() {
     }
 }
 void Game::drawGameOver() {
-    string s1="";
-    string s2="";
-    string s3="";
+    string s1=" ";
+    string s2=" ";
+    string s3=" ";
 
     if (!victory_) {
         s1 = "Game Over!";
@@ -247,6 +260,17 @@ Texture *Game::getTexture(TextureName name) {
 
 Point2D<int> Game::getOrigin() {
     return {int(-(car->getX() - car->getWidth())), 0};
+}
+
+void Game::gotHit(Wall *w) {
+    car->gotHit();
+    for (int i = 0; i < obstacles_.size(); i++) {
+        if (w == obstacles_[i]) {
+            delete obstacles_[i];
+            obstacles_[i] = nullptr;
+            obstacles_.erase(obstacles_.begin() + i);
+        }
+    }
 }
 
 void Game::carUpNdown(int i) {

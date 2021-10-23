@@ -1,6 +1,12 @@
-﻿  Game.cpp
+﻿  ViewController.cpp
+  Game.cpp
 D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(33,23): warning C4018: '<': no coinciden signed/unsigned
 D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(37,22): warning C4018: '<': no coinciden signed/unsigned
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(44,23): warning C4018: '<': no coinciden signed/unsigned
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(63,23): warning C4018: '<': no coinciden signed/unsigned
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(65,23): warning C4018: '<': no coinciden signed/unsigned
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(267,23): warning C4018: '<': no coinciden signed/unsigned
+  Car.cpp
+  Wall.cpp
+  Main.cpp
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Main.cpp(13,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  Generando código...
   CarGame.vcxproj -> D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\bin\CarGamePr1Debug.exe
