@@ -11,26 +11,41 @@ Game::Game(string name, int width, int height, int roadLength, int obstacles) {
     this->height = height;
     doExit = false;
     font = new Font("../Images/Monospace.ttf", 12);
-    createObstacles(obstacles);
+    nObstacles_ = obstacles;
 }
 
 void Game::startGame() {
     car = new Car(this);
     car->setDimension(CAR_WIDTH, CAR_HEIGHT);
     car->setPosition(car->getWidth(), height/ 2.0);
+    createObstacles();
 }
 
-void Game::createObstacles(int i) {
-    for (int j = 0; j < i; j++) {
-        obstacles.push_back(new Wall(this));
-        obstacles[j]->setPosition(rand() % (roadLength - (car->getWidth() * 2)) + (car->getWidth() * 2), rand() % height);
-        obstacles[j]->setDimension();//wall dimensions
-    }
-    //no puede ser asi porque si no al cambiar de estado no se va a cambiar el numero de obstaculos 
-    //hay que hacer esto en start game con una variable privada que determine le numero y luego cambiarlo
-    //maybe hacerlo en dos fases, una de creacion y otra de setear posicion y dimensiones a la vez que chekeas con el resto
-    //el problema es que de esa forma la segunda fase es cuadratica y eso esta feo pero idk
+void Game::createObstacles() {
+    vector<Wall*> auxObstacles_;
 
+    for (int j = 0; j < nObstacles_; j++) {
+        auxObstacles_.push_back(new Wall(this));
+        auxObstacles_[j]->setPosition(rand() % (roadLength - (car->getWidth() * 2)) + (car->getWidth() * 2), rand() % height);
+        auxObstacles_[j]->setDimension(WALL_WIDTH, WALL_HEIGHT);
+    }
+
+    for (int i = 0; i < auxObstacles_.size(); i++) {
+        if (obstacles_.size() == 0)obstacles_.push_back(auxObstacles_[i]);
+        else {
+            int k = 0;
+            while (k < obstacles_.size() && !SDL_IntersectRect(&auxObstacles_[i]->getCollider(), &obstacles_[k]->getCollider(), NULL)) {
+                k++;
+            }
+            if (k == obstacles_.size())obstacles_.push_back(auxObstacles_[i]);            
+        }
+    }
+
+    for (int i = 0; i < auxObstacles_.size(); i++) {
+        delete auxObstacles_[i];
+        auxObstacles_[i] = nullptr;
+        auxObstacles_.erase(auxObstacles_.begin() + i);
+    }
 }
 
 string Game::getGameName() {
@@ -44,6 +59,12 @@ Game::~Game() {
     delete car;
     delete font;
     delete textureContainer;
+
+    for (int i = 0; i < obstacles_.size(); i++) {
+        delete obstacles_[i];
+        obstacles_[i] = nullptr;
+        obstacles_.erase(obstacles_.begin() + i);
+    }
 }
 
 void Game::update(){

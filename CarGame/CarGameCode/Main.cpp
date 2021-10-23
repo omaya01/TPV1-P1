@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
     try {
-        Game *game = new Game("Car game 1.0", 800, 320, 5000);
+        Game* game = new Game("Car game 1.0", 800, 320, 5000, 20);
         ViewController controller(game);
         controller.run();
         delete game;

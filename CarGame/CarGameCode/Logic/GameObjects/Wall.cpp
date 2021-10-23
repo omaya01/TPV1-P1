@@ -1,4 +1,3 @@
-#include "Wall.h"
 #include "../Game.h"
 
 Wall::Wall(Game* g) {
@@ -11,7 +10,7 @@ Wall::~Wall() {
 }
 
 void Wall::draw() {
-	drawTexture(game_->getTexture(carTexture)); // cambiar
+	drawTexture(game_->getTexture(rockTexture));
 }
 
 void Wall::update() {

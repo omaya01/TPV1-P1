@@ -1,14 +1,6 @@
-﻿  ViewController.cpp
-  Game.cpp
-  Car.cpp
-  Wall.cpp
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.cpp(13,19): error C2027: uso del tipo 'Game' sin definir
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.h(1): message : vea la declaración de 'Game'
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.cpp(13,32): error C2065: 'carTexture': identificador no declarado
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.cpp(21,16): error C2027: uso del tipo 'Game' sin definir
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.h(1): message : vea la declaración de 'Game'
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.cpp(22,16): error C2027: uso del tipo 'Game' sin definir
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.h(1): message : vea la declaración de 'Game'
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.cpp(26,2): error C2065: 'texture': identificador no declarado
-  Main.cpp
-  Generando código...
+﻿  Game.cpp
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(33,23): warning C4018: '<': no coinciden signed/unsigned
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(37,22): warning C4018: '<': no coinciden signed/unsigned
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(44,23): warning C4018: '<': no coinciden signed/unsigned
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(63,23): warning C4018: '<': no coinciden signed/unsigned
+  CarGame.vcxproj -> D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\bin\CarGamePr1Debug.exe

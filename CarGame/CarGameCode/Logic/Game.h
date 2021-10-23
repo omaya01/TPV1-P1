@@ -35,7 +35,8 @@ private:
     int distance_;
     float time_;
 
-    vector<Wall*> obstacles; //a futuro cambiar esto a gameobjects
+    int nObstacles_;
+    vector<Wall*> obstacles_; //a futuro cambiar esto a gameobjects
     
     TextureContainer *textureContainer;
     SDL_Renderer* renderer = nullptr;
@@ -45,10 +46,13 @@ private:
 
     int level_ = 0;
 
-    void createObstacles(int i);
+    void createObstacles();
 public:
     const unsigned int CAR_WIDTH = 100;
     const unsigned  int CAR_HEIGHT = 50;
+    
+    const unsigned int WALL_WIDTH = 50;
+    const unsigned int WALL_HEIGHT = 50;
 
     Game(string name, int width, int height, int roadLength, int obstacles);
     ~Game();
