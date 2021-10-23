@@ -1,4 +1,5 @@
 #include "Wall.h"
+#include "../Game.h"
 
 Wall::Wall(Game* g) {
 	game_ = g;
@@ -10,7 +11,7 @@ Wall::~Wall() {
 }
 
 void Wall::draw() {
-	drawTexture(game_->getTexture(carTexture));
+	drawTexture(game_->getTexture(carTexture)); // cambiar
 }
 
 void Wall::update() {
@@ -23,7 +24,7 @@ void Wall::drawTexture(Texture* t) {
 
 	SDL_Rect c = getCollider();
 	SDL_Rect textureBox = { c.x + dX, c.y + dY, c.w, c.h };
-	texture->render(textureBox);
+	t->render(textureBox);
 }
 
 void Wall::setDimension(int width, int height) {
@@ -33,4 +34,11 @@ void Wall::setDimension(int width, int height) {
 
 void Wall::setPosition(double x, double y) {
 	pos_ = Point2D<double>(x, y);
+}
+
+SDL_Rect Wall::getCollider() {
+	return { int(getX() - getWidth()),
+			 int(getY() - getHeight() / 2),
+			 getWidth(),
+			 getHeight() };
 }

@@ -94,7 +94,6 @@ SDL_Rect Car::getCollider(){
              getHeight()};
 }
 
-// no muy seguro de esto, es mejor esto o hacerlo directamente en game con un set position???
 void Car::upNdown(int i) {
     vmove = i;
 }
