@@ -1,6 +1,2 @@
-﻿  Game.cpp
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(37,23): warning C4018: '<': no coinciden signed/unsigned
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(41,22): warning C4018: '<': no coinciden signed/unsigned
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(85,32): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
-D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(278,13): warning C4018: '<': no coinciden signed/unsigned
+﻿  Wall.cpp
   CarGame.vcxproj -> D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\bin\CarGamePr1Debug.exe
