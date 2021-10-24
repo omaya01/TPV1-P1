@@ -25,7 +25,7 @@ void Game::startGame() {
     createObstacles();
 }
 
-void Game::createObstacles() {
+void Game::createObstacles() { //no se me ocurre como hacer esto mejor la verdad (sin dos vectores quiero decir)
     vector<Wall*> auxObstacles_;
 
     for (int j = 0; j < nObstacles_; j++) {
@@ -81,7 +81,7 @@ void Game::update(){
     case MENU:
         break;
     case RUNNING:
-        time_ += SDL_GetTicks() / 1000;
+        time_ += SDL_GetTicks() / 1000; //funciona raro y sinceramente no se por que
         distance_ = roadLength - car->getX();
         car->update();
         for (Wall* w : obstacles_)w->update();
@@ -109,7 +109,8 @@ void Game::draw(){
     }
 }
 
-void Game::drawInfo() {
+// no se muy bien si estos metodos tienen que ser a la fuerza tan "en la cara" pero no se me ocurre una forma distinta de escribir la info en pantalla
+void Game::drawInfo() { 
     int x = font->getSize() / 2;
     int y = font->getSize() / 2;
 
@@ -120,11 +121,11 @@ void Game::drawInfo() {
     // cosas de aqui van a tener que ser variables independientes
     string s1 = "Pos: " + to_string(int(car->getX())) + " "
                + to_string(int(car->getY())) + "  " + 
-        "Distance: " + to_string(distance_)+ "  " + //como esta
+        "Distance: " + to_string(distance_)+ "  " +
         "Speed: " + to_string((int) car->getVel()) + "  " + 
         "Power: " + to_string(car->getPower()) + "  " + 
-        "Time: " + to_string(time_) + "  " + 
-        "Obstacles: " + to_string(obstacles_.size()); //y esto habria que hacerlo
+        "Time: " + to_string((int)time_) + "  " + 
+        "Obstacles: " + to_string(obstacles_.size());
     string s2 = "State: Playing"; // esto deberia pillar el nombre de la variable directamente?
 
     renderText(s1, x, y);
@@ -193,7 +194,7 @@ void Game::drawGameOver() {
     else {
         s1 = "Congratulations!";
         s2 = "User wins";
-        s3 = "Time: " + to_string(time_);
+        s3 = "Time: " + to_string((int)time_);
     }
 
     string s5 = "State: GameOver";
@@ -273,12 +274,14 @@ Point2D<int> Game::getOrigin() {
 
 void Game::gotHit(Wall *w) {
     car->gotHit();
-    for (int i = 0; i < obstacles_.size(); i++) {
-        if (w == obstacles_[i]) {
-            delete obstacles_[i];
-            obstacles_[i] = nullptr;
-            obstacles_.erase(obstacles_.begin() + i);
-        }
+    int i = 0;
+    while (i<obstacles_.size() && w != obstacles_[i]) {
+        i++;
+    }
+    if (i!=obstacles_.size()) {
+        delete obstacles_[i];
+        obstacles_[i] = nullptr;
+        obstacles_.erase(obstacles_.begin() + i);
     }
 }
 

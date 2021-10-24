@@ -34,13 +34,14 @@ private:
     //no se si es lo correcto pero como la otra es constante y no la puedo cambiar pues toca crear otra
     int power_ = INITIAL_POWER;
 
+    //metodos que he puesto privados porque creo que estan mejor siendo privados
+    void drawTexture(Texture* texture); //en este caso no creo que este tenga sentido que sea publico porque claramente es un metodo de herencia
 public:
     Car(Game *game);
     ~Car();
 
     void draw();
     void update();
-    void drawTexture(Texture* texture);
 
     void setDimension(int width, int height);
 

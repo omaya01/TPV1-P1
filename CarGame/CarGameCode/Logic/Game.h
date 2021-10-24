@@ -49,6 +49,11 @@ private:
     int level_ = 0;
 
     void createObstacles();
+    void clearObstacles();
+
+    void drawInfo();
+    void drawMenu();
+    void drawGameOver();
 public:
     const unsigned int CAR_WIDTH = 100;
     const unsigned  int CAR_HEIGHT = 50;
@@ -59,7 +64,6 @@ public:
     Game(string name, int width, int height, int roadLength, int obstacles);
     ~Game();
 
-    void clearObstacles();
     void startGame();
     void update();
     void draw();
@@ -79,12 +83,8 @@ public:
     void loadTextures();
     Texture *getTexture(TextureName name);
     SDL_Renderer *getRenderer();
-    void renderText(string text, int x, int y, SDL_Color color={0,0,0});
+    void renderText(string text, int x, int y, SDL_Color color={0,0,0}); //no estoy seguro de si esto deberia ser privado o no, creo que si tho
 
-    void drawInfo();
-    void drawMenu();
-    void drawGameOver();
-    
     void changeState(state_ s);
     void switchHelp() { help_ = !help_; }
     void vic(bool i) { victory_ = i; }

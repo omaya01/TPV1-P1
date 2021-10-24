@@ -6,18 +6,19 @@
 class Game;
 
 class Meta {
-protected:
+private:
     Game* game_;
     Point2D<double> pos_;
     int w_, h_;
     Texture* texture_;
+
+    void drawTexture(Texture* texture); //para explicacion de por que lo he puesto privado mirar car.h
 public:
     Meta(Game* g);
     ~Meta();
 
     void draw();
     void update();
-    void drawTexture(Texture* texture);
 
     void setDimension(int width, int height);
 

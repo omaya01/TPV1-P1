@@ -5,18 +5,19 @@
 class Game;
 
 class Wall {
-protected:
+private:
     Game* game_;
     Point2D<double> pos_;
     int w_, h_;
     Texture* texture_;
+
+    void drawTexture(Texture* texture); //mirar car.h para explicacion de por que es privado
 public:
     Wall(Game* g);
     ~Wall();
 
     void draw();
     void update();
-    void drawTexture(Texture* texture);
 
     void setDimension(int width, int height);
 

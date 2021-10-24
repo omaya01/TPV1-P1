@@ -5,16 +5,14 @@ Wall::Wall(Game* g) {
 	texture_ = nullptr;
 }
 
-Wall::~Wall() {
-
-}
+Wall::~Wall() {}
 
 void Wall::draw() {
 	drawTexture(game_->getTexture(rockTexture));
 }
 
 void Wall::update() {
-	if ( (-game_->getOrigin().getX())+ game_->getWindowWidth()+w_ > pos_.getX()) {
+	if ( (-game_->getOrigin().getX())+ game_->getWindowWidth()+w_ > pos_.getX()) { //calculo para saber cuando se tiene que empezar a dibujar dibujar
 		draw();
 	}
 
@@ -30,7 +28,7 @@ void Wall::drawTexture(Texture* t) {
 	SDL_Rect c = getCollider();
 	SDL_Rect textureBox = { c.x, c.y + dY, c.w, c.h };
 	t->render(textureBox);
-	SDL_RenderDrawRect(game_->getRenderer(), &c);
+	//SDL_RenderDrawRect(game_->getRenderer(), &c);
 }
 
 void Wall::setDimension(int width, int height) {
@@ -43,7 +41,7 @@ void Wall::setPosition(double x, double y) {
 }
 
 SDL_Rect Wall::getCollider() {
-	return { int(getX() - getWidth()+game_->getOrigin().getX()),
+	return { int(getX() - getWidth()+game_->getOrigin().getX()),//mirar car.cpp para explicacion de por que el calculo esta cambiado
 			 int(getY() - getHeight()/2),
 			 getWidth(),
 			 getHeight() };

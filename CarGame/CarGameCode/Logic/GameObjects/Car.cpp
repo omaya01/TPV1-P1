@@ -8,7 +8,6 @@
 Car::Car(Game *game){
     this->game = game;
     texture = nullptr;
-
 }
 
 void Car::setDimension(int width, int height){
@@ -20,7 +19,6 @@ void  Car::setPosition(double x, double y){
     pos = Point2D<double>(x, y);
 };
 
-// cambiado para trabajar con variable privada vel (creada por mi), supongo que esto esta bien porque si no como narices hago para cambiar la velocidad de actualizacion
 void Car::update() {
     int vspeedaux = 0;
     switch (vmove)
@@ -84,12 +82,13 @@ void Car::drawTexture(Texture *texture) {
     SDL_Rect c = getCollider();
     SDL_Rect textureBox = { c.x , c.y + dY, c.w, c.h};
     texture->render(textureBox);
-    SDL_RenderDrawRect(game->getRenderer(), &c);
+    //SDL_RenderDrawRect(game->getRenderer(), &c);
 }
 
 
 SDL_Rect Car::getCollider(){
-    return { int(getX() - getWidth() + game->getOrigin().getX()),
+    return { int(getX() - getWidth() + game->getOrigin().getX()), //he cambiado la cuenta porque el rectangulo que esto devolvia estaba mal
+        //basicamente se movia lejos de la imagen del coche y he comprobado que dicho movimiento no coincide con el movimiento que tendria si se quedase con la imagen
              int(getY() - getHeight()/2),
              getWidth(),
              getHeight()};

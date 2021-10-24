@@ -5,16 +5,14 @@ Meta::Meta(Game* g) {
 	texture_ = nullptr;
 }
 
-Meta::~Meta() {
-
-}
+Meta::~Meta() {}
 
 void Meta::draw() {
 	drawTexture(game_->getTexture(goalTexture));
 }
 
 void Meta::update() {
-	if ((-game_->getOrigin().getX()) + game_->getWindowWidth()+w_ > pos_.getX()) {
+	if ((-game_->getOrigin().getX()) + game_->getWindowWidth()+w_ > pos_.getX()) { //calculo para saber cuando se tiene que empezar a dibujar
 		draw();
 	}
 	if (SDL_HasIntersection(&getCollider(), &game_->getCarColl())) {
@@ -30,7 +28,7 @@ void Meta::drawTexture(Texture* t) {
 	SDL_Rect c = getCollider();
 	SDL_Rect textureBox = { c.x, c.y + dY, c.w, c.h };
 	t->render(textureBox);
-	SDL_RenderDrawRect(game_->getRenderer(), &c);
+	//SDL_RenderDrawRect(game_->getRenderer(), &c);
 }
 
 void Meta::setDimension(int width, int height) {
@@ -43,7 +41,7 @@ void Meta::setPosition(double x, double y) {
 }
 
 SDL_Rect Meta::getCollider() {
-	return { int(getX() - getWidth() + game_->getOrigin().getX()),
+	return { int(getX() - getWidth() + game_->getOrigin().getX()), //mirar car.cpp para explicacion de por que la cuenta esta cambiada
 			 int(getY() - getHeight() / 2),
 			 getWidth(),
 			 getHeight() };
