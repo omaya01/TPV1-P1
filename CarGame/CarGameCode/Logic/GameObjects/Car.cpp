@@ -82,7 +82,14 @@ void Car::drawTexture(Texture *texture) {
     SDL_Rect c = getCollider();
     SDL_Rect textureBox = { c.x , c.y + dY, c.w, c.h};
     texture->render(textureBox);
-    //SDL_RenderDrawRect(game->getRenderer(), &c);
+    if (debug_) {
+        Box(c, RED).render(game->getRenderer());
+        SDL_Rect aux;
+        aux.w = 10; aux.h = 10;
+        aux.x = w - (aux.w / 2);
+        aux.y = getY() - (aux.h / 2);
+        Box(aux, BLUE).render(game->getRenderer());
+    }
 }
 
 

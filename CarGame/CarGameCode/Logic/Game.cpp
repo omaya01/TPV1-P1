@@ -13,6 +13,7 @@ Game::Game(string name, int width, int height, int roadLength, int obstacles) {
     font = new Font("../Images/Monospace.ttf", 12);
     nObstacles_ = obstacles;
     goal_ = new Meta(this); goal_->setDimension(50, height); goal_->setPosition(roadLength, height / 2);
+    record_ = 0;
 }
 
 void Game::startGame() {
@@ -113,6 +114,8 @@ void Game::draw(){
         break;
     case RUNNING:
         car->draw();
+        goal_->draw();
+        for (Wall* w : obstacles_)w->draw();
         drawInfo();
         break;
     case GAMEOVER:
@@ -143,13 +146,19 @@ void Game::drawInfo() {
     renderText(s1, x, y);
     renderText(s2, x, height - font->getSize());
 
+    if (debug_) {
+        SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255); 
+        SDL_RenderDrawLine(renderer, width / 2, 0, width / 2, height);
+        SDL_RenderDrawLine(renderer, 0, height / 2, width, height / 2);
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    }
     if (help_) {
         int yh = font->getSize()*2;
 
         string h1 = "[UP/DOWN] to move";
         string h2 = "[RIGHT/LEFT] to speed up";
         string h3 = "[s] to shoot (Not Implemented)";
-        string h4 = "[d] toggle debug (Not Implemented)";
+        string h4 = "[d] toggle debug";
         string h5 = "[h] toggle help";
         string h6 = "[p] to pause/unpause (Not Implemented)";
         string h7 = "[ ] space to skip";
@@ -196,6 +205,9 @@ void Game::drawMenu() {
     }
 }
 void Game::drawGameOver() {
+    if (record_ == 0)record_ = time_;
+    else if (time_ < record_)record_ = time_;
+
     string s1=" ";
     string s2=" ";
     string s3=" ";
@@ -206,7 +218,7 @@ void Game::drawGameOver() {
     else {
         s1 = "Congratulations!";
         s2 = "User wins";
-        s3 = "Time: " + to_string((int)time_);
+        s3 = "Time: " + to_string((int)time_) + " Record: " + to_string((int)record_);
     }
 
     string s5 = "State: GameOver";
@@ -295,4 +307,13 @@ void Game::carUpNdown(int i) {
 
 void Game::carAccNdec(int i) {
     car->accelerateNdecelerate(i);
+}
+
+void Game::switchDebug() {
+    if (currentState_ == RUNNING) {
+        debug_ = !debug_;
+        car->switchDebug();
+        goal_->switchDebug();
+        for (Wall* w : obstacles_)w->switchDebug();
+    }
 }

@@ -1,2 +1,8 @@
-﻿  Wall.cpp
+﻿  Meta.cpp
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Meta.cpp(35,39): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Meta.cpp(36,18): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Wall.cpp
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.cpp(36,35): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.cpp(37,18): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Generando código...
   CarGame.vcxproj -> D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\bin\CarGamePr1Debug.exe

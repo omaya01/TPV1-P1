@@ -69,6 +69,9 @@ void ViewController::handleEvents() {
             case SDLK_h:
                 game->switchHelp();
                 break;
+            case SDLK_d:
+                game->switchDebug();
+                break;
             }
         }
         else if (event.type == SDL_KEYUP) {

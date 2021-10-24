@@ -26,6 +26,7 @@ private:
     int w, h;
     Game *game;
     Texture *texture;
+    bool debug_ = false;
 
     //variables para movimiento
     double vel_ = 0;
@@ -57,6 +58,8 @@ public:
     SDL_Rect getCollider();
 
     void gotHit();
+
+    void switchDebug() { debug_ = !debug_; }
 
     //para cambiar la posicion
     void upNdown(int i);

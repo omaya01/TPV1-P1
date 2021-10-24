@@ -30,11 +30,13 @@ private:
     bool doExit;
     bool help_ = false;
     bool victory_ = false;
+    bool debug_ = false;
     int roadLength;
     int width, height;
     Car *car = nullptr;
     int distance_;
     float time_;
+    float record_;
     Meta* goal_ = nullptr;
 
     int nObstacles_;
@@ -97,6 +99,7 @@ public:
     void carUpNdown(int i);
     void carAccNdec(int i);
 
+    void switchDebug();
 };
 
 

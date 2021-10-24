@@ -10,6 +10,7 @@ private:
     Point2D<double> pos_;
     int w_, h_;
     Texture* texture_;
+    bool debug_ = false;
 
     void drawTexture(Texture* texture); //mirar car.h para explicacion de por que es privado
 public:
@@ -29,4 +30,6 @@ public:
     void setPosition(double x, double y);
 
     SDL_Rect getCollider();
+
+    void switchDebug() { debug_ = !debug_; }
 };
