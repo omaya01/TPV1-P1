@@ -75,6 +75,18 @@ void Game::clearObstacles() {
     }
 }
 
+void Game::freeWall(Wall* w){
+    int i = 0;
+    while(i<obstacles_.size() && w!=obstacles_[i]){
+        i++;
+    }
+    if(i!=obstacles_.size()){
+        delete obstacles_[i];
+        obstacles_[i]=nullptr;
+        obstacles_.erase(obstacles_.begin()+i);
+    }
+}
+
 void Game::update(){
     switch (currentState_)
     {
@@ -274,15 +286,7 @@ Point2D<int> Game::getOrigin() {
 
 void Game::gotHit(Wall *w) {
     car->gotHit();
-    int i = 0;
-    while (i<obstacles_.size() && w != obstacles_[i]) {
-        i++;
-    }
-    if (i!=obstacles_.size()) {
-        delete obstacles_[i];
-        obstacles_[i] = nullptr;
-        obstacles_.erase(obstacles_.begin() + i);
-    }
+    freeWall(w);
 }
 
 void Game::carUpNdown(int i) {

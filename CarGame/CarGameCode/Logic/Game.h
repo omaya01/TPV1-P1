@@ -89,10 +89,11 @@ public:
     void switchHelp() { help_ = !help_; }
     void vic(bool i) { victory_ = i; }
 
+    void freeWall(Wall* w);
+
     SDL_Rect getCarColl() { return car->getCollider(); }
     void gotHit(Wall *w);
 
-    //metodos para coche
     void carUpNdown(int i);
     void carAccNdec(int i);
 

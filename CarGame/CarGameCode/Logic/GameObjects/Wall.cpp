@@ -15,6 +15,7 @@ void Wall::update() {
 	if ( (-game_->getOrigin().getX())+ game_->getWindowWidth()+w_ > pos_.getX()) { //calculo para saber cuando se tiene que empezar a dibujar dibujar
 		draw();
 	}
+	else if(pos_.getX()+w_< -game_->getOrigin().getX())game_->freeWall(this);
 
 	if (SDL_HasIntersection(&getCollider(), &game_->getCarColl())) {
 		game_->gotHit(this);
