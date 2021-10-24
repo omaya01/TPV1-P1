@@ -17,9 +17,11 @@ Game::Game(string name, int width, int height, int roadLength, int obstacles) {
 
 void Game::startGame() {
     time_ = 0;
+    if (car != nullptr)delete car;
     car = new Car(this);
     car->setDimension(CAR_WIDTH, CAR_HEIGHT);
     car->setPosition(car->getWidth(), height/ 2.0);
+    clearObstacles();
     createObstacles();
 }
 
@@ -39,17 +41,14 @@ void Game::createObstacles() {
             while (k < obstacles_.size() && !SDL_HasIntersection(&auxObstacles_[i]->getCollider(), &obstacles_[k]->getCollider())) {
                 k++;
             }
-            if (k == obstacles_.size())obstacles_.push_back(auxObstacles_[i]);            
+            if (k == obstacles_.size())obstacles_.push_back(auxObstacles_[i]); 
+            else {
+                delete auxObstacles_[i];
+                auxObstacles_[i] = nullptr;
+            }
         }
     }
-
-    /*
-     for (int i = 0; i < auxObstacles_.size(); i++) {
-        delete auxObstacles_[i];
-        auxObstacles_[i] = nullptr;
-        auxObstacles_.erase(auxObstacles_.begin() + i);
-    }
-    */   
+    auxObstacles_.clear();
 }
 
 string Game::getGameName() {
@@ -63,11 +62,16 @@ Game::~Game() {
     delete car;
     delete font;
     delete textureContainer;
+    delete goal_;
 
-    for (int i = 0; i < obstacles_.size(); i++) {
-        delete obstacles_[i];
-        obstacles_[i] = nullptr;
-        obstacles_.erase(obstacles_.begin() + i);
+    clearObstacles();
+}
+
+void Game::clearObstacles() {
+    while (obstacles_.size() > 0) {
+        delete obstacles_[0];
+        obstacles_[0] = nullptr;
+        obstacles_.erase(obstacles_.begin());
     }
 }
 

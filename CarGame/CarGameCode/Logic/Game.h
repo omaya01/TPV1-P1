@@ -59,6 +59,7 @@ public:
     Game(string name, int width, int height, int roadLength, int obstacles);
     ~Game();
 
+    void clearObstacles();
     void startGame();
     void update();
     void draw();

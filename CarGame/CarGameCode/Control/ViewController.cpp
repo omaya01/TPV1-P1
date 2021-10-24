@@ -17,7 +17,6 @@ ViewController::ViewController(Game *_game) {
 void ViewController::run() {
     uint32_t startTime = 0;
     uint32_t frameTime;
-    game->startGame();
 
     while(!game->doQuit()){
         frameTime = SDL_GetTicks() - startTime;
@@ -61,6 +60,7 @@ void ViewController::handleEvents() {
                 game->carAccNdec(-1);
                 break;
             case SDLK_SPACE:
+                game->startGame();
                 game->changeState(RUNNING);
                 break;
             case SDLK_ESCAPE:
