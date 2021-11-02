@@ -2,5 +2,7 @@ Janek Majchrzycki
 Óscar Maya Jiménez
 
 Apartados opcionales:
--help
+Todos
 
+No funciona:
+todo funciona bien que yo sepa

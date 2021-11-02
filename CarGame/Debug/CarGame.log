@@ -1,8 +1,19 @@
-﻿  Meta.cpp
+﻿  ViewController.cpp
+  Game.cpp
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(38,23): warning C4018: '<': no coinciden signed/unsigned
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(42,22): warning C4018: '<': no coinciden signed/unsigned
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(81,12): warning C4018: '<': no coinciden signed/unsigned
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\Game.cpp(98,32): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Car.cpp
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Car.cpp(90,24): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Meta.cpp
 D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Meta.cpp(35,39): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
 D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Meta.cpp(36,18): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
   Wall.cpp
 D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.cpp(36,35): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
 D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Logic\GameObjects\Wall.cpp(37,18): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Main.cpp
+D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\CarGame\CarGameCode\Main.cpp(13,15): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  Texture.cpp
   Generando código...
   CarGame.vcxproj -> D:\UniversidadPDFs\TPV1\Esta vez de verdad\P1\TPV1-P1\bin\CarGamePr1Debug.exe
